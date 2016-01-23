@@ -21,15 +21,13 @@ void main() {
 /// Throws an [Exception] if an invalid instruction is found.
 int partOne(String instructions) {
   var floor = 0;
-  for (var i = 0; i < instructions.length; i++) {
+  for (var i = 0; i < instructions.length - 1; i++) {
     switch (instructions[i]) {
       case '(':
         floor++;
         break;
       case ')':
         floor--;
-        break;
-      case '\n':
         break;
       default:
         throw 'Invalid instruction at index $i: \'${instructions[i]}\'.';
@@ -44,15 +42,13 @@ int partOne(String instructions) {
 /// Throws an [Exception] if an invalid instruction is found.
 int partTwo(String instructions) {
   var floor = 0;
-  for (var i = 0; i < instructions.length; i++) {
+  for (var i = 0; i < instructions.length - 1; i++) {
     switch (instructions[i]) {
       case '(':
         floor++;
         break;
       case ')':
         floor--;
-        break;
-      case '\n':
         break;
       default:
         throw 'Invalid instruction at index $i: \'${instructions[i]}\'.';

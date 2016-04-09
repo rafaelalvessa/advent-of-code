@@ -1,2 +1,2 @@
-# advent-of-code
-My solutions for the Advent of Code 2015 in Dart.
+# Advent of Code in Dart
+My solutions to the [Advent of Code](http://adventofcode.com/) 2015 in Dart.

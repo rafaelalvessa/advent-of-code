@@ -1,15 +1,12 @@
-import 'dart:io' show File;
+import 'dart:io';
+import 'read_input.dart';
 
 /// Shows the solution for part one and two of the problem.
 void main() {
-  var input;
+  var input = readInput('day1_input');
   try {
-    input = new File('input').readAsStringSync();
     print('Part one: ${partOne(input)}');
-    var basement = partTwo(input);
-    print('Part two: ${basement ?? 'Santa never entered the basement.'}');
-  } on FileSystemException catch (e) {
-    print('Error reading input from file: $e');
+    print('Part two: ${partTwo(input) ?? 'Santa never entered the basement.'}');
   } catch (e) {
     print('Error: $e');
   }
@@ -21,7 +18,8 @@ void main() {
 /// Throws an [Exception] if an invalid instruction is found.
 int partOne(String instructions) {
   var floor = 0;
-  for (var i = 0; i < instructions.length - 1; i++) {
+
+  for (var i = 0; i < instructions.length; i++) {
     switch (instructions[i]) {
       case '(':
         floor++;
@@ -29,10 +27,13 @@ int partOne(String instructions) {
       case ')':
         floor--;
         break;
+      case '\n':
+        break;
       default:
         throw 'Invalid instruction at index $i: \'${instructions[i]}\'.';
     }
   }
+
   return floor;
 }
 
@@ -42,7 +43,9 @@ int partOne(String instructions) {
 /// Throws an [Exception] if an invalid instruction is found.
 int partTwo(String instructions) {
   var floor = 0;
-  for (var i = 0; i < instructions.length - 1; i++) {
+
+  var i = 0;
+  while (i < instructions.length && floor != -1) {
     switch (instructions[i]) {
       case '(':
         floor++;
@@ -50,10 +53,13 @@ int partTwo(String instructions) {
       case ')':
         floor--;
         break;
+      case '\n':
+        break;
       default:
         throw 'Invalid instruction at index $i: \'${instructions[i]}\'.';
     }
-    if (floor == -1) return i + 1;
+    i++;
   }
-  return null;
+
+  return floor == -1 ? i : null;
 }

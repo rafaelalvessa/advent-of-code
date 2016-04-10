@@ -5,7 +5,7 @@ import 'dart:io';
 /// An error message is shown instead if the operation fails.
 String readInput(String filename) {
   try {
-    return new File(filename).readAsStringSync();
+    return new File(filename).readAsStringSync().trim();
   } on FileSystemException catch (e) {
     print('Error reading input from file: $e');
   }

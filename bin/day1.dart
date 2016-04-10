@@ -26,8 +26,6 @@ int partOne(String instructions) {
       case ')':
         floor--;
         break;
-      case '\n':
-        break;
       default:
         throw 'Invalid instruction at index $i: \'${instructions[i]}\'.';
     }
@@ -51,8 +49,6 @@ int partTwo(String instructions) {
         break;
       case ')':
         floor--;
-        break;
-      case '\n':
         break;
       default:
         throw 'Invalid instruction at index $i: \'${instructions[i]}\'.';

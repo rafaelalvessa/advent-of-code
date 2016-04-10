@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'read_input.dart';
 
 /// Shows the solution for part one and two of the problem.

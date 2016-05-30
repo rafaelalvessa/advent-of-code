@@ -1,11 +1,14 @@
+import 'dart:io' show FileSystemException;
 import 'read_input.dart';
 
 /// Shows the solution for part one and two of the problem.
 void main() {
-  var input = readInput('day1_input');
   try {
+    var input = readInput('day1');
     print('Part one: ${partOne(input)}');
     print('Part two: ${partTwo(input) ?? 'Santa never entered the basement.'}');
+  } on FileSystemException catch (e) {
+    print('Error reading input from file: $e');
   } catch (e) {
     print('Error: $e');
   }

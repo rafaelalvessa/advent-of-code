@@ -1,11 +1,14 @@
+import 'dart:io' show FileSystemException;
 import 'dart:math' show min;
 import 'read_input.dart';
 
 /// Shows the solution for part one and two of the problem.
 void main() {
-  var input = readInput('day2_input').split('\n');
   try {
+    var input = readInput('day2').split('\n');
     print('Part one: ${partOne(input)}');
+  } on FileSystemException catch (e) {
+    print('Error reading input from file: $e');
   } catch (e) {
     print('Error: $e');
   }

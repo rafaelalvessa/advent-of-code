@@ -1,0 +1,5 @@
+.atom
+bin/packages
+packages
+.packages
+pubspec.lock

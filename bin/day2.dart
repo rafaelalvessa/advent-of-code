@@ -2,7 +2,7 @@ import 'dart:io' show FileSystemException;
 import 'dart:math' show min;
 import 'read_input.dart';
 
-/// Shows the solution for part one and two of the problem.
+/// Shows the solutions to both puzzles.
 void main() {
   try {
     var input = readInput('day2').split('\n');

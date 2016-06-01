@@ -1,7 +1,7 @@
 import 'dart:io' show FileSystemException;
 import 'read_input.dart';
 
-/// Shows the solution for part one and two of the problem.
+/// Shows the solutions to both puzzles.
 void main() {
   try {
     var input = readInput('day1');

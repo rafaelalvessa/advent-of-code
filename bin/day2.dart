@@ -7,6 +7,7 @@ void main() {
   try {
     var input = readInput('day2').split('\n');
     print('Part one: ${partOne(input)}');
+    print('Part two: ${partTwo(input)}');
   } on FileSystemException catch (e) {
     print('Error reading input from file: $e');
   } catch (e) {
@@ -16,29 +17,66 @@ void main() {
 
 /// Returns the total square feet of wrapping paper the elves should order for
 /// the list of present dimensions in [presents].
+///
+/// Throws an [Exception] if the present has invalid dimensions.
+/// Throws a [FormatException] if an error occurs parsing any of the present's
+/// dimensions to an [int].
 int partOne(List<String> presents) {
   var total = 0;
-  var dimensions;
   var surfaces;
   for (var present in presents) {
-    dimensions = present.split('x');
-    if (dimensions.length != 3) throw 'Invalid present dimensions: ${present}.';
-    surfaces = getSurfaceAreas(dimensions);
+    surfaces = getSurfaceAreas(getDimensions(present));
     total += 2 * surfaces.reduce((x, y) => x + y) + getSlack(surfaces);
   }
   return total;
 }
 
-/// Returns a list with the three surface areas of a present based on its
-/// [dimensions].
+/// Returns the total feet of ribbon the elves should order for the list of
+/// present dimensions in [presents].
 ///
+/// Throws an [Exception] if the present has invalid dimensions.
 /// Throws a [FormatException] if an error occurs parsing any of the present's
 /// dimensions to an [int].
-List<int> getSurfaceAreas(List<String> dimensions) => [
-  int.parse(dimensions[0]) * int.parse(dimensions[1]),
-  int.parse(dimensions[1]) * int.parse(dimensions[2]),
-  int.parse(dimensions[0]) * int.parse(dimensions[2])
+int partTwo(List<String> presents) {
+  var total = 0;
+  var dimensions;
+  for (var present in presents) {
+    dimensions = getDimensions(present);
+    total += getSmallestPerimeter(dimensions) +
+        dimensions[0] * dimensions[1] * dimensions[2];
+  }
+  return total;
+}
+
+/// Returns a list with the dimensions of the [present].
+///
+/// Throws an [Exception] if the present has invalid dimensions.
+/// Throws a [FormatException] if an error occurs parsing any of the present's
+/// dimensions to an [int].
+List<int> getDimensions(String present) {
+  var dimensions = present.split('x');
+  if (dimensions.length != 3) throw 'Invalid present dimensions: ${present}.';
+  return [
+    int.parse(dimensions[0]),
+    int.parse(dimensions[1]),
+    int.parse(dimensions[2])
+  ];
+}
+
+/// Returns a list with the three surface areas of a present based on its
+/// [dimensions].
+List<int> getSurfaceAreas(List<int> dimensions) => [
+  dimensions[0] * dimensions[1],
+  dimensions[1] * dimensions[2],
+  dimensions[0] * dimensions[2]
 ];
+
+/// Returns the smallest perimenter of any one side of the present based on its
+/// [dimensions].
+int getSmallestPerimeter(List<int> dimensions) {
+  dimensions.sort();
+  return 2 * (dimensions[0] + dimensions[1]);
+}
 
 /// Returns the slack, which is the same size as the present's smallest surface
 /// area in [surfaces].

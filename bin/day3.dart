@@ -21,29 +21,28 @@ void main() {
 int partOne(String directions) {
   var houses = 1;
   var visited = new Set<String>();
-  var x = 0;
-  var y = 0;
-  visited.add('${x}, ${y}');
+  var location = new Location(0, 0);
+  visited.add(location.toString());
 
   for (var i = 0; i < directions.length; i++) {
     switch (directions[i]) {
       case '^':
-        y++;
+        location.y++;
         break;
       case '>':
-        x++;
+        location.x++;
         break;
       case 'v':
-        y--;
+        location.y--;
         break;
       case '<':
-        x--;
+        location.x--;
         break;
       default:
         throw 'Invalid direction at index $i: "${directions[i]}".';
     }
 
-    if (visited.add('${x}, ${y}')) houses++;
+    if (visited.add(location.toString())) houses++;
   }
 
   return houses;
@@ -63,10 +62,10 @@ int partTwo(String directions) {
   for (var i = 0; i < directions.length; i++) {
     if (i.isEven) {
       _move(santa, i, directions[i]);
-      houses += visited.add(santa.toString()) ? 1 : 0;
+      if (visited.add(santa.toString())) houses++;
     } else {
       _move(roboSanta, i, directions[i]);
-      houses += visited.add(roboSanta.toString()) ? 1 : 0;
+      if (visited.add(roboSanta.toString())) houses ++;
     }
   }
 

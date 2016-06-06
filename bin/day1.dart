@@ -30,7 +30,7 @@ int partOne(String instructions) {
         floor--;
         break;
       default:
-        throw 'Invalid instruction at index $i: \'${instructions[i]}\'.';
+        throw 'Invalid instruction at index $i: "${instructions[i]}".';
     }
   }
 
@@ -54,7 +54,7 @@ int partTwo(String instructions) {
         floor--;
         break;
       default:
-        throw 'Invalid instruction at index $i: \'${instructions[i]}\'.';
+        throw 'Invalid instruction at index $i: "${instructions[i]}".';
     }
     i++;
   }

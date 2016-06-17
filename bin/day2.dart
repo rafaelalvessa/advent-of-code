@@ -55,7 +55,7 @@ int partTwo(List<String> presents) {
 /// dimensions to an [int].
 List<int> getDimensions(String present) {
   var dimensions = present.split('x');
-  if (dimensions.length != 3) throw 'Invalid present dimensions: ${present}.';
+  if (dimensions.length != 3) throw 'Invalid present dimensions: $present.';
   return [
     int.parse(dimensions[0]),
     int.parse(dimensions[1]),

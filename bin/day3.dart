@@ -90,7 +90,7 @@ void _move(Location location, int i, String direction) {
       location.x--;
       break;
     default:
-      throw 'Invalid direction at index $i: "${direction}".';
+      throw 'Invalid direction at index $i: "$direction".';
   }
 }
 
@@ -102,5 +102,5 @@ class Location {
   Location(this.x, this.y);
 
   /// Returns a string representation of this location.
-  String toString() => '(${x}, ${y})';
+  String toString() => '($x, $y)';
 }

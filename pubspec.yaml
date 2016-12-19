@@ -1,5 +1,5 @@
 name: advent_of_code
 version: 0.0.1
-description: My solutions for the Advent of Code 2015 in Dart.
+description: My solutions to the Advent of Code puzzles in Dart.
 dependencies:
   crypto: "^2.0.1"

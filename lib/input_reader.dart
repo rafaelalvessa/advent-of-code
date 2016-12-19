@@ -6,7 +6,7 @@ import 'dart:io';
 String readInput(String filename) {
   var inputFile = new File('input/${filename}');
   if (!inputFile.existsSync()) {
-    throw new FileSystemException('Input file "${filename}" does not exist.');
+    throw new FileSystemException('Input file "$filename" does not exist.');
   }
   return inputFile.readAsStringSync().trim();
 }

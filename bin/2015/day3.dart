@@ -1,14 +1,11 @@
-import 'dart:io' show FileSystemException;
-import 'read_input.dart';
+import 'package:advent_of_code/input_reader.dart';
 
 /// Shows the solutions to both puzzles.
 void main() {
   try {
-    var input = readInput('day3');
+    var input = readInput('2015/day3');
     print('Part one: ${partOne(input)}');
     print('Part two: ${partTwo(input)}');
-  } on FileSystemException catch (e) {
-    print('Error reading input from file: $e');
   } catch (e) {
     print('Error: $e');
   }

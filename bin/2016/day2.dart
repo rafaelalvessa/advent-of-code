@@ -40,10 +40,9 @@ class Keypad {
 /// Shows the solutions to both puzzles.
 void main() {
   try {
-    var input = readInput('2016/day2');
-    var lines = input.split('\n');
-    print('Puzzle one: ${puzzleOne(lines)}');
-    print('Puzzle two: ${puzzleTwo(lines)}');
+    var input = readInput('2016/day2').split('\n');
+    print('Puzzle one: ${puzzleOne(input)}');
+    print('Puzzle two: ${puzzleTwo(input)}');
   } catch (e) {
     print('Error: $e');
   }

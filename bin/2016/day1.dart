@@ -12,7 +12,7 @@ const left = 'L';
 class Location {
   int x;
   int y;
-  var direction;
+  String direction;
 
   /// A location, by location, starts at (0, 0) facing north.
   Location([this.x = 0, this.y = 0]) {

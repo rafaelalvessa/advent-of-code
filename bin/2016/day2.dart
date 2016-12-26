@@ -2,9 +2,9 @@ import 'package:advent_of_code/input_reader.dart';
 
 /// A keypad has a layout of buttons to insert the bathroom code.
 class Keypad {
-  var row;
-  var column;
-  var buttons;
+  final List<String> buttons;
+  int row;
+  int column;
 
   Keypad(this.buttons, this.row, this.column);
 
